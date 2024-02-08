@@ -1,0 +1,50 @@
+-- ДЗ-2
+
+-- К названию таблицы добавил _lev для удобства, - на случай,
+-- если Вы будете запускать, чтобы не было таблиц с одинаковым названием.
+
+-- 1. Создать таблицу employees;
+-- employeeid - целое число, первичный ключ, автоинкремент;
+-- fname - строка, не null,
+-- lastname - строка, не null,
+-- email - строка, не null,
+-- phone - строка, не null.
+
+create table employees_lev(
+employeeid int primary key auto_increment,
+fname varchar(32) not null,
+lastname varchar(32) not null,
+email varchar(32) not null,
+phone varchar(20) not null
+);
+
+-- 2. Добавить поле salary с типом numeric.
+alter table employees_lev
+add salary numeric(9, 2);
+
+-- 3. Изменить тип поля salary с numeric на integer.
+alter table employees_lev
+modify column salary integer;
+
+-- 4. Переименовать поле fname на first_name.
+alter table employees_lev
+change fname first_name varchar(32);
+
+-- 5. Удалить поле phone.
+alter table employees_lev
+drop column phone;
+
+-- 6. Добавить поле department (строка, not null).
+alter table employees_lev
+add column department varchar(45) not null;
+
+-- 7. Заполнить таблицу семью строками.
+insert into employees_lev (first_name, lastname, email, department)
+values 	('Anna', 'Krasotka', 'anna_love@gmail.com', 'Department of Beauty'),
+	('Nelly', 'Nice', 'nelly_e@gmail.com', 'Department of Beauty'),
+	('David', 'Familyname', 'david_kind@gmail.com', 'Department of Good Deeds'),
+	('Vladimir', 'Boss', 'vladimir@company.com', 'Department of Management'),
+        ('Tigran', 'Spec', 'tigran@greenbank.ru', 'IT'),
+        ('Eric', 'Master', 'eric@telran.de', 'Department of System Architecture'),
+        ('Artem', 'Java', 'backend@spanientech.sp', 'Department of Backend');
+
